@@ -1,17 +1,90 @@
-research_task:
+project_planner_task:
   description: >
-    Conduct a thorough research about {topic}
-    Make sure you find any interesting and relevant information given
-    the current year is {current_year}.
+    Given the project description: '{project_description}', break down all necessary steps to create a comprehensive project plan.
+    This involves:
+    1. Analyzing the project description to extract key goals and deliverables.
+    2. Defining a clear project overview and scope.
+    3. Establishing a realistic timeline with major milestones.
+    4. Outlining a preliminary budget.
+    5. Identifying potential risks and initial mitigation ideas.
+    Your output should be a detailed project plan, structured according to the expected output format.
   expected_output: >
-    A list with 10 bullet points of the most relevant information about {topic}
-  agent: researcher
+      A comprehensive and actionable Execution Plan for the project: '{project_description}'.
+      This plan must be detailed enough for an end-user to follow step-by-step to execute their project. It should include:
 
-reporting_task:
+      I. PROJECT DEFINITION:
+         A. Overall Project Goal: The primary objective, derived from '{project_description}'.
+         B. Core Deliverables: Tangible outputs of the entire project.
+         C. Key Success Metrics: How project success will be measured.
+
+      II. DETAILED EXECUTION PHASES & TASKS:
+          (The project should be broken down into logical, sequential phases. For each phase, provide:)
+          A. Phase [Number]: [Name of Phase - e.g., "Phase 1: Initiation & Research"]
+             - Phase Objective: What this phase aims to achieve.
+             - Tasks within this Phase:
+               1. Task [PhaseNumber].[TaskNumber]: [Concise Task Name]
+                  - Actionable Steps: Detailed, step-by-step instructions to complete this task.
+                  - Task-Specific Deliverable(s): What will be produced by completing this task.
+                  - Estimated Effort/Duration: (e.g., X hours, Y days).
+                  - Required Resources/Skills (if applicable): (e.g., "Access to survey tool", "Graphic design skills").
+                  - Dependencies (if any): (e.g., "Completion of Task 1.1").
+               (Add more tasks as needed for the phase following the same numbering and structure)
+             - Overall Phase Gate/Deliverable: The major outcome marking the completion of this phase.
+             - Estimated Phase Duration: Total time for this phase.
+
+          (Repeat for all necessary project phases, numbering them sequentially, e.g., Phase 1, Phase 2, etc.)
+
+      III. MASTER PROJECT TIMELINE:
+           A. Estimated Project Start Date: (Can state "Upon project approval" or a specific date if inferable).
+           B. Key Milestone Deadlines: (Aligned with phase completions or critical deliverables).
+           C. Estimated Overall Project Completion Date:
+
+      IV. ROLES & RESPONSIBILITIES (High-Level):
+           A. Suggested Key Roles: (e.g., Project Lead, Technical Expert, Content Reviewer - roles relevant to '{project_description}').
+           B. Primary Responsibilities for Each Role: (Briefly outline for the context of this project).
+
+      V. RISK IDENTIFICATION & MITIGATION:
+           A. Potential Risks: (List 3-5 key risks specifically relevant to '{project_description}').
+           B. Proactive Mitigation Actions: Specific, actionable steps to address each identified risk.
+
+      VI. (Optional but Recommended) QUALITY ASSURANCE POINTS:
+           A. Suggested review points or quality check activities during or after key phases to ensure quality of deliverables.
+
+      The entire plan should be written with clear, action-oriented language, enabling an end-user to pick it up and begin execution immediately.
+
+project_scoping_task:
   description: >
-    Review the context you got and expand each topic into a full section for a report.
-    Make sure the report is detailed and contains any and all relevant information.
+    You have been provided with a detailed Execution Plan from the project_planner_task for the project: '{project_description}'.
+    Your responsibility is to thoroughly review this Execution Plan and:
+    1. Extract and clearly define the definitive Project Scope, including specific inclusions and exclusions based on the plan.
+    2. Validate that all elements within the Execution Plan (phases, tasks, deliverables) are consistent with this defined scope.
+    3. Identify any aspects of the Execution Plan that might represent scope creep or are not well-aligned with the core project objectives as detailed in the plan.
+    4. Ensure the timeline and budget (if detailed in the plan) are realistic for the defined scope.
+    The goal is to produce a formal Project Scoping Document that confirms and, if necessary, refines the scope based on the comprehensive Execution Plan.
   expected_output: >
-    A fully fledged report with the main topics, each with a full section of information.
-    Formatted as markdown without '```'
-  agent: reporting_analyst
+    A formal Project Scoping Document based on the provided Execution Plan for '{project_description}', including:
+
+    I. EXECUTIVE SUMMARY OF SCOPE:
+       A. Brief overview of the project's boundaries as confirmed from the Execution Plan.
+
+    II. DETAILED SCOPE STATEMENT:
+        A. Confirmed Project Objectives: (As derived and validated from the Execution Plan).
+        B. In-Scope Deliverables & Features: (Clearly listed, extracted directly from the Execution Plan's tasks and deliverables).
+        C. Out-of-Scope Items: (Explicitly stated items or areas that are NOT part of the project, inferred from the plan's focus or by identifying potential ambiguities).
+
+    III. SCOPE VALIDATION AGAINST EXECUTION PLAN:
+         A. Confirmation that the phases and tasks in the Execution Plan directly support the scope defined above.
+         B. Notes on alignment between the detailed tasks and the overall project objectives.
+
+    IV. IDENTIFIED SCOPE ISSUES & RISKS (from reviewing the Execution Plan):
+         A. Potential Scope Creep: (Any tasks or deliverables in the plan that seem to go beyond the core objectives).
+         B. Ambiguities or Misalignments: (Areas where the plan's details might not fully align with the perceived scope).
+         C. Assumptions made during planning that impact scope.
+
+    V. RECONFIRMED HIGH-LEVEL TIMELINE & BUDGET SUMMARY (as it pertains to the validated scope):
+        A. Summary of key milestone timelines from the Execution Plan that fit the validated scope.
+        B. Summary of budget elements from the Execution Plan relevant to the validated scope.
+
+    This document should serve as a definitive statement of what the project will achieve and deliver, based on the detailed execution plan.
+  context:
+    - project_planner_task # This makes it use the output of project_planner_task

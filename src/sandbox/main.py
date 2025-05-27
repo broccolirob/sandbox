@@ -18,8 +18,7 @@ def run():
     Run the crew.
     """
     inputs = {
-        'topic': 'AI LLMs',
-        'current_year': str(datetime.now().year)
+        'project_description': 'Our company wants to launch a new weekly blog series focused on "Sustainable Living Practices for Urban Dwellers". The goal is to increase website engagement and position our brand as a thought leader in sustainability. The target audience is young professionals living in cities. We need to plan the first month of content (4 blog posts), including research, writing, and a promotional strategy. The desired tone is informative, actionable, and inspiring. We have a team that includes research capabilities and content writing capabilities. The deadline for having the first month\'s plan (including topics for 4 posts and a promotional outline) is in 2 weeks.',
     }
     
     try:
@@ -33,8 +32,7 @@ def train():
     Train the crew for a given number of iterations.
     """
     inputs = {
-        "topic": "AI LLMs",
-        'current_year': str(datetime.now().year)
+        'project_description': 'Our company wants to launch a new weekly blog series focused on "Sustainable Living Practices for Urban Dwellers". The goal is to increase website engagement and position our brand as a thought leader in sustainability. The target audience is young professionals living in cities. We need to plan the first month of content (4 blog posts), including research, writing, and a promotional strategy. The desired tone is informative, actionable, and inspiring. We have a team that includes research capabilities and content writing capabilities. The deadline for having the first month\'s plan (including topics for 4 posts and a promotional outline) is in 2 weeks.',
     }
     try:
         Sandbox().crew().train(n_iterations=int(sys.argv[1]), filename=sys.argv[2], inputs=inputs)
@@ -57,8 +55,7 @@ def test():
     Test the crew execution and returns the results.
     """
     inputs = {
-        "topic": "AI LLMs",
-        "current_year": str(datetime.now().year)
+        'project_description': 'Our company wants to launch a new weekly blog series focused on "Sustainable Living Practices for Urban Dwellers". The goal is to increase website engagement and position our brand as a thought leader in sustainability. The target audience is young professionals living in cities. We need to plan the first month of content (4 blog posts), including research, writing, and a promotional strategy. The desired tone is informative, actionable, and inspiring. We have a team that includes research capabilities and content writing capabilities. The deadline for having the first month\'s plan (including topics for 4 posts and a promotional outline) is in 2 weeks.',
     }
     
     try:
