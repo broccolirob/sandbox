@@ -51,6 +51,7 @@ project_planner_task:
            A. Suggested review points or quality check activities during or after key phases to ensure quality of deliverables.
 
       The entire plan should be written with clear, action-oriented language, enabling an end-user to pick it up and begin execution immediately.
+  agent: project_manager
 
 project_scoping_task:
   description: >
@@ -88,3 +89,4 @@ project_scoping_task:
     This document should serve as a definitive statement of what the project will achieve and deliver, based on the detailed execution plan.
   context:
     - project_planner_task # This makes it use the output of project_planner_task
+  agent: project_manager

@@ -15,7 +15,7 @@ class Sandbox():
     @agent
     def project_manager(self) -> Agent:
         return Agent(
-            config=self.agents_config['project_manager']
+            config=self.agents_config['project_manager'],
             verbose=True
         )
     
